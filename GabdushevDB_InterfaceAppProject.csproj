@@ -89,13 +89,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseCommandStringsMamager.cs" />
     <Compile Include="DatabaseManager.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="HubForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,8 +120,8 @@
     <Compile Include="TruckMarketForm.Designer.cs">
       <DependentUpon>TruckMarketForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="ChildForm.resx">
+      <DependentUpon>ChildForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HubForm.resx">
       <DependentUpon>HubForm.cs</DependentUpon>

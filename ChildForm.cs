@@ -9,10 +9,16 @@ namespace GabdushevDB_InterfaceAppProject
 {
     public class ChildForm: Form
     {
+        public delegate ChildForm ChildFormConstructor();
+
         public event Action<ChildForm> ChildFormGoBack;
         protected void GoBack()
         {
             ChildFormGoBack(this);
+        }
+
+        public ChildForm()
+        {
         }
     }
 

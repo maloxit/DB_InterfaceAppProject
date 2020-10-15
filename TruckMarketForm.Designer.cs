@@ -39,7 +39,7 @@
             this.addOfferButton = new System.Windows.Forms.Button();
             this.buyTruckGridView = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.citesListBox = new System.Windows.Forms.ListBox();
+            this.citiesListBox = new System.Windows.Forms.ListBox();
             this.buyTruckButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
@@ -80,7 +80,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.label5);
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Panel2MinSize = 150;
-            this.splitContainer1.Size = new System.Drawing.Size(975, 621);
+            this.splitContainer1.Size = new System.Drawing.Size(1100, 621);
             this.splitContainer1.SplitterDistance = 331;
             this.splitContainer1.SplitterIncrement = 2;
             this.splitContainer1.TabIndex = 0;
@@ -94,7 +94,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(973, 48);
+            this.label4.Size = new System.Drawing.Size(1098, 48);
             this.label4.TabIndex = 3;
             this.label4.Text = "Продажа";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -111,12 +111,13 @@
             // sellTruckButton
             // 
             this.sellTruckButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sellTruckButton.Location = new System.Drawing.Point(895, 303);
+            this.sellTruckButton.Location = new System.Drawing.Point(1020, 303);
             this.sellTruckButton.Name = "sellTruckButton";
             this.sellTruckButton.Size = new System.Drawing.Size(75, 23);
             this.sellTruckButton.TabIndex = 2;
             this.sellTruckButton.Text = "Продать";
             this.sellTruckButton.UseVisualStyleBackColor = true;
+            this.sellTruckButton.Click += new System.EventHandler(this.SellTruckButton_Click);
             // 
             // sellTruckGridView
             // 
@@ -131,7 +132,7 @@
             this.sellTruckGridView.Name = "sellTruckGridView";
             this.sellTruckGridView.ReadOnly = true;
             this.sellTruckGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.sellTruckGridView.Size = new System.Drawing.Size(967, 233);
+            this.sellTruckGridView.Size = new System.Drawing.Size(1092, 233);
             this.sellTruckGridView.TabIndex = 0;
             // 
             // label5
@@ -143,7 +144,7 @@
             this.label5.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(973, 48);
+            this.label5.Size = new System.Drawing.Size(1098, 48);
             this.label5.TabIndex = 4;
             this.label5.Text = "Покупка";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -167,10 +168,10 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.label3);
-            this.splitContainer2.Panel2.Controls.Add(this.citesListBox);
+            this.splitContainer2.Panel2.Controls.Add(this.citiesListBox);
             this.splitContainer2.Panel2.Controls.Add(this.buyTruckButton);
-            this.splitContainer2.Size = new System.Drawing.Size(975, 234);
-            this.splitContainer2.SplitterDistance = 763;
+            this.splitContainer2.Size = new System.Drawing.Size(1100, 234);
+            this.splitContainer2.SplitterDistance = 888;
             this.splitContainer2.TabIndex = 0;
             // 
             // label2
@@ -185,12 +186,13 @@
             // addOfferButton
             // 
             this.addOfferButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.addOfferButton.Location = new System.Drawing.Point(612, 208);
+            this.addOfferButton.Location = new System.Drawing.Point(737, 208);
             this.addOfferButton.Name = "addOfferButton";
             this.addOfferButton.Size = new System.Drawing.Size(148, 23);
             this.addOfferButton.TabIndex = 2;
             this.addOfferButton.Text = "Добавить предложение";
             this.addOfferButton.UseVisualStyleBackColor = true;
+            this.addOfferButton.Click += new System.EventHandler(this.AddOfferButton_Click);
             // 
             // buyTruckGridView
             // 
@@ -205,7 +207,7 @@
             this.buyTruckGridView.Name = "buyTruckGridView";
             this.buyTruckGridView.ReadOnly = true;
             this.buyTruckGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.buyTruckGridView.Size = new System.Drawing.Size(756, 186);
+            this.buyTruckGridView.Size = new System.Drawing.Size(881, 186);
             this.buyTruckGridView.TabIndex = 0;
             // 
             // label3
@@ -217,16 +219,16 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Желаемый город доставки";
             // 
-            // citesListBox
+            // citiesListBox
             // 
-            this.citesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.citiesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.citesListBox.FormattingEnabled = true;
-            this.citesListBox.Location = new System.Drawing.Point(2, 16);
-            this.citesListBox.Name = "citesListBox";
-            this.citesListBox.Size = new System.Drawing.Size(202, 186);
-            this.citesListBox.TabIndex = 4;
+            this.citiesListBox.FormattingEnabled = true;
+            this.citiesListBox.Location = new System.Drawing.Point(2, 16);
+            this.citiesListBox.Name = "citiesListBox";
+            this.citiesListBox.Size = new System.Drawing.Size(202, 186);
+            this.citiesListBox.TabIndex = 4;
             // 
             // buyTruckButton
             // 
@@ -237,6 +239,7 @@
             this.buyTruckButton.TabIndex = 2;
             this.buyTruckButton.Text = "Купить";
             this.buyTruckButton.UseVisualStyleBackColor = true;
+            this.buyTruckButton.Click += new System.EventHandler(this.BuyTruckButton_Click);
             // 
             // backButton
             // 
@@ -270,7 +273,7 @@
             this.splitContainer3.Panel2.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.splitContainer3.Panel2.Controls.Add(this.backButton);
             this.splitContainer3.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer3.Size = new System.Drawing.Size(975, 673);
+            this.splitContainer3.Size = new System.Drawing.Size(1100, 673);
             this.splitContainer3.SplitterDistance = 621;
             this.splitContainer3.TabIndex = 1;
             // 
@@ -278,10 +281,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 673);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(1100, 673);
             this.Controls.Add(this.splitContainer3);
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 545);
             this.Name = "TruckMarketForm";
@@ -289,6 +290,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Торговая площадка грузовиков";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TruckMarketForm_FormClosing);
+            this.Load += new System.EventHandler(this.TruckMarketForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -321,7 +323,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView buyTruckGridView;
-        private System.Windows.Forms.ListBox citesListBox;
+        private System.Windows.Forms.ListBox citiesListBox;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label label4;

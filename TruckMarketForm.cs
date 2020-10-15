@@ -17,22 +17,21 @@ namespace GabdushevDB_InterfaceAppProject
         private DataGridViewColumn[] buyTruckGridViewColumns;
         
         
-        private DatabaseManager databaseManager;
+        private readonly DatabaseManager databaseManager;
+        private readonly Dictionary<String, String> citiesDict;
 
         public TruckMarketForm()
         {
             
             InitializeComponent();
             databaseManager = new DatabaseManager();
+            citiesDict = new Dictionary<string, string>();
             SellTruckGridView_Initialize();
             BuyTruckGridView_Initialize();
-
         }
 
         private void SellTruckGridView_Initialize()
         {
-            MySqlCommand sqlCommand = new MySqlCommand("SELECT `trucks`.`id`, `trucks`.`model`, `cargo_forms`.`name` AS `cargo_form`, `trucks`.`lift_capacity`, `trucks`.`price`, `trucks`.`downtime_cost_pr_d`, `trucks`.`transportation_cost_pr_d`, `trucks`.`empty_transp_cost_pr_d`, `cit`.`city_name` FROM `trucks` LEFT JOIN `cargo_forms` ON `trucks`.`cargo_form_id` = `cargo_forms`.`id` LEFT JOIN `truck_statuses` ON `trucks`.`truck_status_id` = `truck_statuses`.`id` LEFT JOIN( SELECT `cities`.`city_name`, `routes`.`id` FROM `routes` LEFT JOIN `cities` ON `routes`.`departure_city_id` = `cities`.`id` WHERE `routes`.`departure_city_id` = `routes`.`destination_city_id` ) `cit` ON `trucks`.`route_id` = `cit`.`id` WHERE `truck_statuses`.`name` = \"Простой\" ORDER BY `id` ASC", databaseManager.connection);
-            MySqlDataReader dataReader;
             sellTruckGridViewColumns = new DataGridViewColumn[]{
                 new DataGridViewTextBoxColumn
                 {
@@ -85,6 +84,14 @@ namespace GabdushevDB_InterfaceAppProject
             sellTruckGridView.MultiSelect = false;
             sellTruckGridView.ReadOnly = true;
 
+            
+        }
+
+        private void SellTruckGridView_Update()
+        {
+            MySqlCommand sqlCommand = new MySqlCommand(DatabaseCommandStringsMamager.selectTrucksForSelling, databaseManager.connection);
+            MySqlDataReader dataReader;
+            sellTruckGridView.Rows.Clear();
             try
             {
                 databaseManager.OpenConnection();
@@ -108,8 +115,6 @@ namespace GabdushevDB_InterfaceAppProject
 
         private void BuyTruckGridView_Initialize()
         {
-            MySqlCommand sqlCommand = new MySqlCommand("SELECT `trucks`.`id`, `trucks`.`model`, `cargo_forms`.`name` AS `cargo_form`, `trucks`.`lift_capacity`, `trucks`.`price`, `trucks`.`downtime_cost_pr_d`, `trucks`.`transportation_cost_pr_d`, `trucks`.`empty_transp_cost_pr_d` FROM `trucks` LEFT JOIN `cargo_forms` ON `trucks`.`cargo_form_id` = `cargo_forms`.`id` LEFT JOIN `truck_statuses` ON `trucks`.`truck_status_id` = `truck_statuses`.`id` WHERE `truck_statuses`.`name` = \"Продан/Не куплен\" ORDER BY `id` ASC", databaseManager.connection);
-            MySqlDataReader dataReader;
             buyTruckGridViewColumns = new DataGridViewColumn[]{
                 new DataGridViewTextBoxColumn
                 {
@@ -156,7 +161,13 @@ namespace GabdushevDB_InterfaceAppProject
             buyTruckGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             buyTruckGridView.MultiSelect = false;
             buyTruckGridView.ReadOnly = true;
+        }
 
+        private void BuyTruckGridView_Update()
+        {
+            MySqlCommand sqlCommand = new MySqlCommand(DatabaseCommandStringsMamager.selectTrucksForBuying, databaseManager.connection);
+            MySqlDataReader dataReader;
+            buyTruckGridView.Rows.Clear();
             try
             {
                 databaseManager.OpenConnection();
@@ -178,6 +189,33 @@ namespace GabdushevDB_InterfaceAppProject
             }
         }
 
+        private void CitiesListBox_Update()
+        {
+            MySqlCommand sqlCommand = new MySqlCommand(DatabaseCommandStringsMamager.selectCities, databaseManager.connection);
+            MySqlDataReader dataReader;
+            citiesListBox.Items.Clear();
+            citiesDict.Clear();
+            try
+            {
+                databaseManager.OpenConnection();
+                dataReader = sqlCommand.ExecuteReader();
+                String[] values = new String[2];
+                while (dataReader.Read())
+                {
+                    citiesDict.Add(dataReader.GetValue(1).ToString(), dataReader.GetValue(0).ToString());
+                }
+            }
+            catch
+            {
+                MessageBox.Show("error");
+            }
+            finally
+            {
+                databaseManager.CloseConnection();
+            }
+            citiesListBox.Items.AddRange(citiesDict.Keys.ToArray());
+        }
+
         protected void BackButton_Click(object sender, EventArgs e)
         {
             Close();
@@ -186,6 +224,37 @@ namespace GabdushevDB_InterfaceAppProject
         private void TruckMarketForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             GoBack();
+        }
+
+        private void TruckMarketForm_Load(object sender, EventArgs e)
+        {
+            SellTruckGridView_Update();
+            BuyTruckGridView_Update();
+            CitiesListBox_Update();
+        }
+
+        private void SellTruckButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddOfferButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ChildForm child = new TruckMarketAddForm();
+            child.ChildFormGoBack += ChildFormGoBackHandler;
+            child.Show();
+        }
+
+        private void BuyTruckButton_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void ChildFormGoBackHandler(ChildForm obj)
+        {
+            obj.ChildFormGoBack -= ChildFormGoBackHandler;
+            this.Show();
+            BuyTruckGridView_Update();
         }
     }
 }

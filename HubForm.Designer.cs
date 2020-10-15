@@ -56,18 +56,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(234, 178);
             this.Controls.Add(this.orderButton);
             this.Controls.Add(this.truckMarketButton);
+            this.Location = new System.Drawing.Point(15, 15);
             this.Name = "HubForm";
-            this.Text = "HubForm";
             this.ResumeLayout(false);
 
         }
 
-        #endregion
-
-        private System.Windows.Forms.Button truckMarketButton;
         private System.Windows.Forms.Button orderButton;
+        private System.Windows.Forms.Button truckMarketButton;
+
+        #endregion
     }
 }

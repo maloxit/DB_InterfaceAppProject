@@ -35,20 +35,20 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            this.modelTextBox = new System.Windows.Forms.TextBox();
+            this.cargoFormComboBox = new System.Windows.Forms.ComboBox();
+            this.liftCapacityNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.priceNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.downtimeCostNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.transportationCostNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.emptyTranspCostNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.backButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.liftCapacityNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downtimeCostNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transportationCostNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptyTranspCostNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -114,143 +114,155 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Стоимость дня переезда порожняком";
             // 
-            // textBox1
+            // modelTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(221, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(249, 20);
-            this.textBox1.TabIndex = 7;
+            this.modelTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.modelTextBox.Location = new System.Drawing.Point(182, 24);
+            this.modelTextBox.Name = "modelTextBox";
+            this.modelTextBox.Size = new System.Drawing.Size(265, 20);
+            this.modelTextBox.TabIndex = 7;
             // 
-            // comboBox1
+            // cargoFormComboBox
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Location = new System.Drawing.Point(349, 63);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 8;
+            this.cargoFormComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cargoFormComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cargoFormComboBox.Location = new System.Drawing.Point(277, 63);
+            this.cargoFormComboBox.Name = "cargoFormComboBox";
+            this.cargoFormComboBox.Size = new System.Drawing.Size(170, 21);
+            this.cargoFormComboBox.TabIndex = 8;
             // 
-            // numericUpDown1
+            // liftCapacityNumericUpDown
             // 
-            this.numericUpDown1.Increment = new decimal(new int[] {
+            this.liftCapacityNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.liftCapacityNumericUpDown.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(350, 104);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.liftCapacityNumericUpDown.Location = new System.Drawing.Point(327, 104);
+            this.liftCapacityNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 9;
-            this.numericUpDown1.ThousandsSeparator = true;
+            this.liftCapacityNumericUpDown.Name = "liftCapacityNumericUpDown";
+            this.liftCapacityNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.liftCapacityNumericUpDown.TabIndex = 9;
+            this.liftCapacityNumericUpDown.ThousandsSeparator = true;
             // 
-            // numericUpDown2
+            // priceNumericUpDown
             // 
-            this.numericUpDown2.Increment = new decimal(new int[] {
+            this.priceNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.priceNumericUpDown.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown2.Location = new System.Drawing.Point(350, 143);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.priceNumericUpDown.Location = new System.Drawing.Point(327, 143);
+            this.priceNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown2.TabIndex = 10;
-            this.numericUpDown2.ThousandsSeparator = true;
+            this.priceNumericUpDown.Name = "priceNumericUpDown";
+            this.priceNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.priceNumericUpDown.TabIndex = 10;
+            this.priceNumericUpDown.ThousandsSeparator = true;
             // 
-            // numericUpDown3
+            // downtimeCostNumericUpDown
             // 
-            this.numericUpDown3.Increment = new decimal(new int[] {
+            this.downtimeCostNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.downtimeCostNumericUpDown.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown3.Location = new System.Drawing.Point(350, 182);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.downtimeCostNumericUpDown.Location = new System.Drawing.Point(327, 182);
+            this.downtimeCostNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown3.TabIndex = 10;
-            this.numericUpDown3.ThousandsSeparator = true;
+            this.downtimeCostNumericUpDown.Name = "downtimeCostNumericUpDown";
+            this.downtimeCostNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.downtimeCostNumericUpDown.TabIndex = 10;
+            this.downtimeCostNumericUpDown.ThousandsSeparator = true;
             // 
-            // numericUpDown4
+            // transportationCostNumericUpDown
             // 
-            this.numericUpDown4.Increment = new decimal(new int[] {
+            this.transportationCostNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.transportationCostNumericUpDown.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown4.Location = new System.Drawing.Point(350, 221);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.transportationCostNumericUpDown.Location = new System.Drawing.Point(327, 221);
+            this.transportationCostNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown4.TabIndex = 10;
-            this.numericUpDown4.ThousandsSeparator = true;
+            this.transportationCostNumericUpDown.Name = "transportationCostNumericUpDown";
+            this.transportationCostNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.transportationCostNumericUpDown.TabIndex = 10;
+            this.transportationCostNumericUpDown.ThousandsSeparator = true;
             // 
-            // numericUpDown5
+            // emptyTranspCostNumericUpDown
             // 
-            this.numericUpDown5.Increment = new decimal(new int[] {
+            this.emptyTranspCostNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.emptyTranspCostNumericUpDown.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown5.Location = new System.Drawing.Point(350, 260);
-            this.numericUpDown5.Maximum = new decimal(new int[] {
+            this.emptyTranspCostNumericUpDown.Location = new System.Drawing.Point(327, 260);
+            this.emptyTranspCostNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown5.TabIndex = 10;
-            this.numericUpDown5.ThousandsSeparator = true;
+            this.emptyTranspCostNumericUpDown.Name = "emptyTranspCostNumericUpDown";
+            this.emptyTranspCostNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.emptyTranspCostNumericUpDown.TabIndex = 10;
+            this.emptyTranspCostNumericUpDown.ThousandsSeparator = true;
             // 
-            // button1
+            // backButton
             // 
-            this.button1.Location = new System.Drawing.Point(12, 327);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 36);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Отмена";
-            this.button1.UseVisualStyleBackColor = true;
+            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.backButton.Location = new System.Drawing.Point(12, 328);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(127, 36);
+            this.backButton.TabIndex = 11;
+            this.backButton.Text = "Отмена";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
-            // button2
+            // addButton
             // 
-            this.button2.Location = new System.Drawing.Point(343, 327);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(127, 36);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addButton.Location = new System.Drawing.Point(320, 328);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(127, 36);
+            this.addButton.TabIndex = 12;
+            this.addButton.Text = "Добавить";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // TruckMarketAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 375);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.numericUpDown5);
-            this.Controls.Add(this.numericUpDown4);
-            this.Controls.Add(this.numericUpDown3);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(459, 376);
+            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.emptyTranspCostNumericUpDown);
+            this.Controls.Add(this.transportationCostNumericUpDown);
+            this.Controls.Add(this.downtimeCostNumericUpDown);
+            this.Controls.Add(this.priceNumericUpDown);
+            this.Controls.Add(this.liftCapacityNumericUpDown);
+            this.Controls.Add(this.cargoFormComboBox);
+            this.Controls.Add(this.modelTextBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -258,18 +270,19 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(380, 380);
             this.Name = "TruckMarketAddForm";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.Text = "Добавление предложения на торговую площадку грузовиков";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TruckMarketAddForm_FormClosing);
+            this.Load += new System.EventHandler(this.TruckMarketAddForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.liftCapacityNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downtimeCostNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transportationCostNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptyTranspCostNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,14 +297,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox modelTextBox;
+        private System.Windows.Forms.ComboBox cargoFormComboBox;
+        private System.Windows.Forms.NumericUpDown liftCapacityNumericUpDown;
+        private System.Windows.Forms.NumericUpDown priceNumericUpDown;
+        private System.Windows.Forms.NumericUpDown downtimeCostNumericUpDown;
+        private System.Windows.Forms.NumericUpDown transportationCostNumericUpDown;
+        private System.Windows.Forms.NumericUpDown emptyTranspCostNumericUpDown;
+        private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Button addButton;
     }
 }

@@ -34,7 +34,7 @@
             // backButton
             // 
             this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.backButton.Location = new System.Drawing.Point(12, 370);
+            this.backButton.Location = new System.Drawing.Point(12, 275);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 23);
             this.backButton.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 405);
+            this.ClientSize = new System.Drawing.Size(432, 310);
             this.ControlBox = false;
             this.Controls.Add(this.backButton);
             this.MaximizeBox = false;

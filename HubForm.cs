@@ -12,9 +12,7 @@ namespace GabdushevDB_InterfaceAppProject
 {
     public partial class HubForm : Form
     {
-        delegate ChildForm ChildFormConstructor();
-
-        private Dictionary<String, ChildFormConstructor> buttonNameToFormDict = new Dictionary<string, ChildFormConstructor>(5);
+        private readonly Dictionary<string, ChildForm.ChildFormConstructor> buttonNameToFormDict = new Dictionary<string, ChildForm.ChildFormConstructor>(5);
         public HubForm()
         {
             InitializeComponent();
