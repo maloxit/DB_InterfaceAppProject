@@ -11,17 +11,21 @@ using System.Windows.Forms;
 
 namespace GabdushevDB_InterfaceAppProject
 {
-    public partial class TruckMarketAddForm : ChildForm
+    public partial class TruckMarketAddForm : Form
     {
         private readonly DatabaseManager databaseManager;
 
         private readonly Dictionary<String, String> cargoFormsDict;
+
+        private DialogResult result;
 
         public TruckMarketAddForm()
         {
             InitializeComponent();
             databaseManager = new DatabaseManager();
             cargoFormsDict = new Dictionary<string, string>();
+            result = DialogResult.Cancel;
+            CargoFormComboBox_Update();
         }
 
         private void CargoFormComboBox_Update()
@@ -34,7 +38,6 @@ namespace GabdushevDB_InterfaceAppProject
             {
                 databaseManager.OpenConnection();
                 dataReader = sqlCommand.ExecuteReader();
-                String[] values = new String[2];
                 while (dataReader.Read())
                 {
                     cargoFormsDict.Add(dataReader.GetValue(1).ToString(), dataReader.GetValue(0).ToString());
@@ -42,13 +45,20 @@ namespace GabdushevDB_InterfaceAppProject
             }
             catch
             {
-                MessageBox.Show("error");
+                result = DialogResult.Abort;
             }
             finally
             {
                 databaseManager.CloseConnection();
             }
-            cargoFormComboBox.Items.AddRange(cargoFormsDict.Keys.ToArray());
+            if (result == DialogResult.Abort)
+            {
+                Close();
+            }
+            else
+            {
+                cargoFormComboBox.Items.AddRange(cargoFormsDict.Keys.ToArray());
+            }
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -58,7 +68,7 @@ namespace GabdushevDB_InterfaceAppProject
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            MySqlCommand sqlCommand = new MySqlCommand(DatabaseCommandStringsMamager.addTruckOfferString, databaseManager.connection);
+            MySqlCommand sqlCommand = new MySqlCommand(DatabaseCommandStringsMamager.insertTruckOffer, databaseManager.connection);
             if (modelTextBox.Text != "" && cargoFormComboBox.SelectedItem != null && liftCapacityNumericUpDown.Value > 0 && priceNumericUpDown.Value > 0 
                 && downtimeCostNumericUpDown.Value > 0 && transportationCostNumericUpDown.Value > 0 && emptyTranspCostNumericUpDown.Value > 0)
             {
@@ -76,17 +86,19 @@ namespace GabdushevDB_InterfaceAppProject
 
                     if (sqlCommand.ExecuteNonQuery() != 1)
                     {
-                        MessageBox.Show("error");
+                        throw new Exception();
                     }
+                    result = DialogResult.OK;
                 }
                 catch
                 {
-                    MessageBox.Show("error");
+                    result = DialogResult.Abort;
                 }
                 finally
                 {
                     databaseManager.CloseConnection();
                 }
+                
                 Close();
             }
             else
@@ -96,14 +108,9 @@ namespace GabdushevDB_InterfaceAppProject
             
         }
 
-        private void TruckMarketAddForm_Load(object sender, EventArgs e)
-        {
-            CargoFormComboBox_Update();
-        }
-
         private void TruckMarketAddForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            GoBack();
+            this.DialogResult = result;
         }
     }
 }

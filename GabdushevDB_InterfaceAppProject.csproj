@@ -89,6 +89,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangeGlobalDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeGlobalDate.Designer.cs">
+      <DependentUpon>ChangeGlobalDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseCommandStringsMamager.cs" />
     <Compile Include="DatabaseManager.cs" />
     <Compile Include="HubForm.cs">
@@ -96,9 +102,6 @@
     </Compile>
     <Compile Include="HubForm.Designer.cs">
       <DependentUpon>HubForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ChildForm.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="OrderForm.cs">
       <SubType>Form</SubType>
@@ -120,8 +123,8 @@
     <Compile Include="TruckMarketForm.Designer.cs">
       <DependentUpon>TruckMarketForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ChildForm.resx">
-      <DependentUpon>ChildForm.cs</DependentUpon>
+    <EmbeddedResource Include="ChangeGlobalDate.resx">
+      <DependentUpon>ChangeGlobalDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HubForm.resx">
       <DependentUpon>HubForm.cs</DependentUpon>

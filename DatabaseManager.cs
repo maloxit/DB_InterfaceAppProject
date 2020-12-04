@@ -18,7 +18,7 @@ namespace GabdushevDB_InterfaceAppProject
 
         public void OpenConnection()
         {
-            if (connection.State == System.Data.ConnectionState.Closed)
+            if (connection.State != System.Data.ConnectionState.Open)
             {
                 connection.Open();
             }

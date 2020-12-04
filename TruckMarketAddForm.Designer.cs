@@ -277,7 +277,6 @@
             this.ShowIcon = false;
             this.Text = "Добавление предложения на торговую площадку грузовиков";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TruckMarketAddForm_FormClosing);
-            this.Load += new System.EventHandler(this.TruckMarketAddForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.liftCapacityNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.downtimeCostNumericUpDown)).EndInit();
