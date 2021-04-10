@@ -94,7 +94,8 @@ namespace GabdushevDB_InterfaceAppProject
 
         private void CargoTypeComboBox_Initialize()
         {
-            MySqlCommand sqlCommand = new MySqlCommand(DatabaseCommandStringsMamager.selectCargoTypesAndForms, databaseManager.connection);
+            MySqlCommand sqlCommand = new MySqlCommand("SELECT `cargo_types`.`id`, `cargo_types`.`name`, `cargo_forms`.`id`, `cargo_forms`.`name`, `cargo_types`.`transportation_cost` " +
+                "FROM `cargo_types` LEFT JOIN `cargo_forms` ON `cargo_types`.`cargo_form_id` = `cargo_forms`.`id`", databaseManager.connection);
             MySqlDataReader dataReader;
             cargoTypeComboBox.Items.Clear();
             cargoTypeAndFormIdDict.Clear();
@@ -104,7 +105,12 @@ namespace GabdushevDB_InterfaceAppProject
                 dataReader = sqlCommand.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    cargoTypeAndFormIdDict.Add("(" + dataReader.GetString(3) + ")" + dataReader.GetString(1), new CargoTypeAndForm { cargoTypeId = dataReader.GetInt32(0), cargoFormId = dataReader.GetInt32(2), transCost = dataReader.GetDecimal(4) });
+                    cargoTypeAndFormIdDict.Add("(" + dataReader.GetString(3) + ")" + dataReader.GetString(1), new CargoTypeAndForm 
+                    { 
+                        cargoTypeId = dataReader.GetInt32(0), 
+                        cargoFormId = dataReader.GetInt32(2), 
+                        transCost = dataReader.GetDecimal(4) 
+                    });
                 }
             }
             catch
@@ -189,7 +195,10 @@ namespace GabdushevDB_InterfaceAppProject
 
         private void TruckDataGridView_Update()
         {
-            MySqlCommand sqlCommand = new MySqlCommand(DatabaseCommandStringsMamager.selectTrucksForOrder, databaseManager.connection);
+            MySqlCommand sqlCommand = new MySqlCommand("SELECT `trucks`.`id`, `trucks`.`model`, `trucks`.`lift_capacity`, " +
+                "`trucks`.`transportation_cost_pr_d`, `trucks`.`empty_transp_cost_pr_d`, `trucks`.`city_id`, `cities`.`city_name` " +
+                "FROM `trucks` LEFT JOIN `truck_statuses` ON `trucks`.`truck_status_id` = `truck_statuses`.`id` LEFT JOIN `cities` ON `trucks`.`city_id` = `cities`.`id` " +
+                "WHERE `truck_statuses`.`name` = \"Простой\" AND `trucks`.`cargo_form_id` = @cargo_form_id AND `trucks`.`lift_capacity` >= @min_lift ORDER BY `id` ASC", databaseManager.connection);
             MySqlDataReader dataReader;
             truckDataGridView.Rows.Clear();
             truckRows.Clear();
@@ -276,7 +285,8 @@ namespace GabdushevDB_InterfaceAppProject
 
         private bool FindRoute(int departureCityId, int destinationCityId, out int routeId, out int routeDays)
         {
-            MySqlCommand sqlCommand = new MySqlCommand(DatabaseCommandStringsMamager.selectRoute, databaseManager.connection);
+            MySqlCommand sqlCommand = new MySqlCommand("SELECT `routes`.* FROM `routes` " +
+                "WHERE `routes`.`departure_city_id` = @departure_city_id AND `routes`.`destination_city_id` = @destination_city_id", databaseManager.connection);
             MySqlDataReader reader;
 
             try
@@ -412,7 +422,7 @@ namespace GabdushevDB_InterfaceAppProject
 
                 // @truck_id, @truck_status_id
                 updateTruckToExecutingOrder.Parameters.AddWithValue("@truck_id", trunsParams.selectedTruckId);
-                updateTruckToExecutingOrder.Parameters.AddWithValue("@truck_status_id", (trunsParams.emptyTransRouteDays > 0) ? 1 : 2);
+                updateTruckToExecutingOrder.Parameters.AddWithValue("@truck_status_id", (trunsParams.emptyTransRouteDays > 0) ? 2 : 3);
 
                 if (insertOrderPayment.ExecuteNonQuery() != 1)
                 {

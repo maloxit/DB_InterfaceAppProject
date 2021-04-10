@@ -8,9 +8,6 @@ namespace GabdushevDB_InterfaceAppProject
 {
     static class DatabaseCommandStringsMamager
     {
-        public static readonly string selectRoute = "SELECT `routes`.* FROM `routes` WHERE `routes`.`departure_city_id` = @departure_city_id AND `routes`.`destination_city_id` = @destination_city_id";
-        public static readonly string selectCargoTypesAndForms = "SELECT `cargo_types`.`id`, `cargo_types`.`name`, `cargo_forms`.`id`, `cargo_forms`.`name`, `cargo_types`.`transportation_cost` FROM `cargo_types` LEFT JOIN `cargo_forms` ON `cargo_types`.`cargo_form_id` = `cargo_forms`.`id`";
-        public static readonly string selectTrucksForOrder = "SELECT `trucks`.`id`, `trucks`.`model`, `trucks`.`lift_capacity`, `trucks`.`transportation_cost_pr_d`, `trucks`.`empty_transp_cost_pr_d`, `trucks`.`city_id`, `cities`.`city_name` FROM `trucks` LEFT JOIN `truck_statuses` ON `trucks`.`truck_status_id` = `truck_statuses`.`id` LEFT JOIN `cities` ON `trucks`.`city_id` = `cities`.`id` WHERE `truck_statuses`.`name` = \"Простой\" AND `trucks`.`cargo_form_id` = @cargo_form_id AND `trucks`.`lift_capacity` >= @min_lift ORDER BY `id` ASC";
         public static readonly string selectGlobals = "SELECT `globals`.* FROM `globals`";
         public static readonly string updateGlobalBudget = "UPDATE `globals` SET `globals`.`budget` = @budget";
         public static readonly string updateGlobalCurDate = "UPDATE `globals` SET `globals`.`cur_date` = @cur_date";

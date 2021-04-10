@@ -294,7 +294,7 @@ namespace GabdushevDB_InterfaceAppProject
                 //@value, @trans_date,  @truck_id
                 sqlCommand1.Parameters.AddWithValue("@truck_id", int.Parse(buyTruckDataGridView.SelectedRows[0].Cells["id"].Value.ToString()));
                 sqlCommand1.Parameters.AddWithValue("@trans_date", Program.globals.cur_date.Date);
-                sqlCommand1.Parameters.AddWithValue("@value", -decimal.Parse(buyTruckDataGridView.SelectedRows[0].Cells["price"].Value.ToString()));
+                sqlCommand1.Parameters.AddWithValue("@value", decimal.Parse(buyTruckDataGridView.SelectedRows[0].Cells["price"].Value.ToString()));
 
                 //@city_id, @truck_id
                 sqlCommand2.Parameters.AddWithValue("@city_id", citiesDict[citiesListBox.SelectedItem.ToString()]);

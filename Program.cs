@@ -12,7 +12,37 @@ namespace GabdushevDB_InterfaceAppProject
         public decimal budget;
         public DateTime cur_date;
         public DateTime last_update_date;
-    };
+    }
+
+    public class InformationTableParametrs
+    {
+
+        public (string, string)[] colomns;
+
+        public string commandText;
+        public (string, string)[] dateFilterPairs;
+        public bool isPeriodActive;
+
+        public int defaultRowsOnScreenCount;
+
+        public InformationTableParametrs(string commandText, bool isPeriodActive, (string, string)[] dateFilterPairs, int defaultRowsOnScreenCount, params (string, string)[] pairs)
+        {
+            this.commandText = commandText;
+            this.isPeriodActive = isPeriodActive;
+            this.defaultRowsOnScreenCount = defaultRowsOnScreenCount;
+            this.dateFilterPairs = new (string, string)[dateFilterPairs.Length];
+            for (int i = 0; i < dateFilterPairs.Length; i++)
+            {
+                this.dateFilterPairs[i] = dateFilterPairs[i];
+            }
+            colomns = new (string, string)[pairs.Length];
+            for (int i = 0; i < pairs.Length; i++)
+            {
+                colomns[i] = pairs[i];
+            }
+        }
+    }
+
     static class Program
     {
         /// <summary>
@@ -32,6 +62,8 @@ namespace GabdushevDB_InterfaceAppProject
         static DatabaseManager databaseManager;
 
         public static Globals globals;
+
+        
 
         public static void ReloadDatabaseGlobals()
         {
@@ -110,7 +142,18 @@ namespace GabdushevDB_InterfaceAppProject
                 dataReader = sqlCommand2.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    activeOrderRows.Add(new ActiveOrderRow {orderId = dataReader.GetInt32(0), truckId = dataReader.GetInt32(1), daysFromStart = dataReader.GetInt32(2), emptyTransDays = dataReader.GetInt32(3), loadedTransDays = dataReader.GetInt32(4), unloadCityId = dataReader.GetInt32(5), upToDateTruckStatusId = 0, isFinished = false});
+                    activeOrderRows.Add(new ActiveOrderRow 
+                        {
+                            orderId = dataReader.GetInt32(0),
+                            truckId = dataReader.GetInt32(1),
+                            daysFromStart = dataReader.GetInt32(2),
+                            emptyTransDays = dataReader.GetInt32(3), 
+                            loadedTransDays = dataReader.GetInt32(4),
+                            unloadCityId = dataReader.GetInt32(5), 
+                            upToDateTruckStatusId = 0, 
+                            isFinished = false
+                        }
+                        );
                 }
             }
             catch
@@ -171,8 +214,9 @@ namespace GabdushevDB_InterfaceAppProject
                 {
                     if (tdr.Value.downtimeDaysCount > 0)
                     {
-                        sqlCommand3.CommandText += $"INSERT INTO `truck_money_trans` (`id`, `value`, `trans_date`, `truck_id`, `truck_money_trans_type_id`) VALUES (NULL, @value{ tdr.Key }, (SELECT `globals`.`cur_date` FROM `globals` WHERE `globals`.`id` = 1), @truck_id{ tdr.Key }, '1'); ";
-                        sqlCommand3.Parameters.AddWithValue($"@value{ tdr.Key }", -tdr.Value.downtimeCostPrDay * tdr.Value.downtimeDaysCount);
+                        sqlCommand3.CommandText += $"INSERT INTO `truck_money_trans` (`id`, `value`, `trans_date`, `truck_id`, `truck_money_trans_type_id`) " +
+                            $"VALUES (NULL, @value{ tdr.Key }, (SELECT `globals`.`cur_date` FROM `globals` WHERE `globals`.`id` = 1), @truck_id{ tdr.Key }, '1'); ";
+                        sqlCommand3.Parameters.AddWithValue($"@value{ tdr.Key }", tdr.Value.downtimeCostPrDay * tdr.Value.downtimeDaysCount);
                         overallDowntimeCost += tdr.Value.downtimeCostPrDay * tdr.Value.downtimeDaysCount;
                         sqlCommand3.Parameters.AddWithValue($"@truck_id{ tdr.Key }", tdr.Key);
                     }
